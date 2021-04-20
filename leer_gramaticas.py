@@ -48,7 +48,7 @@ def leer_gramaticas():
     for linea in f:
         if n==0:
             name = linea.strip("\n")
-            print(name)
+            #print(name)
             producciones = []
             n+=1
         elif n==1:
@@ -57,15 +57,15 @@ def leer_gramaticas():
             terminales = terminos[1].split(",")
             terminal_inicial = terminos[2].strip("\n")
 
-            print(no_terminales)
-            print(terminales)
-            print(terminal_inicial)
+            #print(no_terminales)
+            #print(terminales)
+            #print(terminal_inicial)
 
             n+=1
         elif n==2 and linea[0]!="*":
             produc = linea.split("->")
             der_produc = produc[1].split()
-            print(der_produc)
+            #print(der_produc)
             producs = definir_termino(terminales,no_terminales,der_produc)
             prod = produccion(produc[0],producs)
             producciones.append(prod)
@@ -82,8 +82,8 @@ def leer_gramaticas():
     return gramaticas
 
 
-gramaticas = leer_gramaticas()
+#gramaticas = leer_gramaticas()
 
-for g in gramaticas:
-    g.imprimir_gramatica()
-    print()
+#for g in gramaticas:
+    #g.imprimir_gramatica()
+    #print()

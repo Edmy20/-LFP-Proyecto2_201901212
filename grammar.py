@@ -8,6 +8,15 @@ class simbolo:
         self.sim = sim
         self.terminal = terminal
 
+class iteracion:
+    def __init__(self,id= None, pila = None, entrada = None, transicion= None, cambio=None):
+        self.id = id
+        self.pila = pila
+        self.entrada = entrada
+        self.transicion = transicion
+        self.cambio = cambio
+
+
 class gramatica:
     def __init__(self,nombre = None, producciones = None, sim_terminales = None, sim_Noterminales= None, state_inicial=None):
         self.nombre = nombre
@@ -25,7 +34,7 @@ class gramatica:
             for rule in regla.rules:
                 n+=1                 
                 if n>1:
-                    print("|",end="")
+                    print(" | ",end="")
                 for r in rule:
                     print(r.sim,end="")
             print()

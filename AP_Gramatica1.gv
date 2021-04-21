@@ -1,0 +1,20 @@
+digraph { 
+        graph [rankdir=LR]
+        i [label=i shape=circle]
+        p [label=p shape=circle]
+        q [label=q height=1 shape=circle width = 1]
+        f [label=f shape=doublecircle]t [label = "AP_Gramatica1
+Terminales = {z,a,b}
+No Terminales = {S,M,N}
+Alfabeto de Pila = {z,a,b,S,M,N#}
+Estados = {i,p,q,f}
+Estado Inical = {i}
+Estado de Aceptacion = {f}" shape=box]i -> p [label ="$ , $ ; #"]p -> q [label="$ , $ ; S"]q:s -> q:s [label="z , z; $
+a , a; $
+b , b; $
+"]q:n -> q:n [label="$ , S ; zMNz
+$ , M ; aMa
+$ , M ; z
+$ , N ; bNb
+$ , N ; z
+"]q -> f [label="$ , # , $"]}

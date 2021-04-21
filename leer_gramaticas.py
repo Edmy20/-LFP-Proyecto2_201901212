@@ -46,6 +46,7 @@ def leer_gramaticas():
     gramaticas = []
 
     for linea in f:
+      if linea[0]!=" ":
         if n==0:
             name = linea.strip("\n")
             #print(name)
@@ -80,10 +81,3 @@ def leer_gramaticas():
     f.close() 
     
     return gramaticas
-
-
-#gramaticas = leer_gramaticas()
-
-#for g in gramaticas:
-    #g.imprimir_gramatica()
-    #print()

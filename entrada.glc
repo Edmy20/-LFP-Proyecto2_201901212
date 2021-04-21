@@ -8,6 +8,7 @@ N->z
 *
 Grm1
 S,A,B,C;a,b,z;S
+S->B
 S->A
 A->a A a
 A->B

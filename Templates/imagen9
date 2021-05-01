@@ -1,0 +1,9 @@
+digraph { 
+        graph [rankdir=LR]
+        i [label=<i> shape=circle style=filled fillcolor=azure2]
+        p [label=p shape=circle style=filled fillcolor=azure2]
+        q [label=q height=1 shape=circle width = 1 style=filled fillcolor=skyblue]
+        f [label=f shape=doublecircle style=filled fillcolor=azure2]
+        i -> p [label =<$ , $ ; #>]
+        p -> q [label =<$ , $ ; S>]q -> f [label =<$ , # ; $>]a [shape = none label=<<table border="0" cellborder="1" cellspacing="0">
+            <tr><td BGCOLOR="lightblue1">Iteracion</td><td BGCOLOR="lightblue1"><b>9</b></td></tr><tr><td BGCOLOR="lightblue1">Pila</td><td>Cba#</td></tr><tr><td BGCOLOR="lightblue1" >Entrada</td><td>z</td></tr></table>>]q:s -> q:s [label=<<table BORDER='0' CELLBORDER='0' CELLSPACING='0'><tr><td>a , a; $</td></tr><tr><td>b , b; $</td></tr><tr><td>z , z; $</td></tr></table>>]q:n -> q:n [label=<<table BORDER='0' CELLBORDER='0' CELLSPACING='0'><tr><td>$ , S ; A</td></tr><tr><td>$ , A ; aAa</td></tr><tr><td>$ , A ; B</td></tr><tr><td>$ , B ; bBb</td></tr><tr><td>$ , B ; C</td></tr><tr><td>$ , C ; zC</td></tr><tr><td><FONT COLOR="blue">$ , C ; z</FONT></td></tr></table>>]}

@@ -29,7 +29,6 @@ class gramatica:
 
         for regla in self.producciones:
             print(regla.produc_nombre+"->",end="")
-            #print(len(regla.rules))
             n=0
             for rule in regla.rules:
                 n+=1                 

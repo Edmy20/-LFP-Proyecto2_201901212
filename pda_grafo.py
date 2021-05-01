@@ -2,58 +2,34 @@ from graphviz import Digraph
 from graphviz import Source
 from informacion_gramatica import *
 import pydot
+import webbrowser
 
+def generar_pda(nombre):
+    contenido = '<divt>'+nombre+'<divt>'
+    contenido+=  '<p><img src="Templates/'+nombre+'.png"></p>'
+    t = open("Templates/template_pda.html",'r')
+    f = open("Reporte_"+nombre+".html",'w',encoding="utf-8")
+    template = t.read()
+  
+    cuerpo = template % (contenido)
+    f.write(cuerpo)
+    t.close()
+    f.close()
 
-
-def grafo(gramaticas):
-    
-    gramatica = seleccionar_gramatica(gramaticas)
-
-    dot = Digraph('pda', filename='pda.gv')
-    dot.attr(rankdir='LR', size='8,5')
-
-    etq = label_grafo(gramatica)
-
-    dot.attr(label=etq)
-    dot.attr('node', shape='circle')
-    dot.node('i')
-    dot.node('p')
-    dot.attr('node', shape='doublecircle')
-    dot.node('f')
-    dot.attr('node',shape='circle', height='1',width='1')
-    dot.node('q')
-
-
-    etq1= llenar_transformaciones(gramatica)
-    etq2 = llenar_ter(gramatica.sim_terminales)
-
-
-
-    dot.edge('i', 'p', label='$,$;#')
-    dot.edge('p', 'q', label='$,$;'+gramatica.state_inicial)
-    dot.edge('q', 'q', label=etq1+etq2)
-    dot.edge('q', 'f', label='$,#,$')
-
-
-
-    dot.view()
-def crear_imagen_png(nombre):
-    (graph,) = pydot.graph_from_dot_file("AP_"+nombre+".dot")
-    #graph.write_png("AP_"+nombre+".pdf")
-    graph.write("AP_"+nombre+".pdf")
+    webbrowser.open_new_tab("Reporte_"+nombre+".html")
 
 def grafo_pda(gramaticas):
-    gramatica = seleccionar_gramatica(gramaticas)
+    gramatica = seleccionar("","las Gramaticas ",gramaticas)
 
     dott = """digraph { 
         graph [rankdir=LR]
-        i [label=i shape=circle]
-        p [label=p shape=circle]
-        q [label=q height=1 shape=circle width = 1]
-        f [label=f shape=doublecircle]"""
+        i [label=i shape=circle style=filled fillcolor=skyblue]
+        p [label=p shape=circle style=filled fillcolor=skyblue]
+        q [label=q height=1 shape=circle width = 1 style=filled fillcolor=skyblue]
+        f [label=f shape=doublecircle style=filled fillcolor=skyblue]"""
 
     etq = label_grafo(gramatica)
-    dott+="t [label = "+'"'+etq+'" shape=box]'
+    dott+=etq
 
     etq1= llenar_transformaciones(gramatica)
     etq2 = llenar_ter(gramatica.sim_terminales)
@@ -64,12 +40,20 @@ def grafo_pda(gramaticas):
     dott+='q:n -> q:n [label="'+etq1+'"]'
     dott+= 'q -> f [label="$ , # , $"]}'
 
-    file = open("AP_"+gramatica.nombre+".gv", "w")
-    file.write(dott)
-    file.close()
+    nom = 'AP_'+gramatica.nombre
 
-    #crear_imagen_png(gramatica.nombre)
-    s = Source(dott, filename="AP_"+gramatica.nombre+".gv", format="pdf")
-    s.view()
+
+
+    src = Source(dott)
+    src.render("Templates/"+nom, format = 'png')
+    print()
+    print("=========================================")
+    print("       AUTOMATA GENERADO EXITOSAMENTE    ")
+    print("=========================================")
+    print()
+
+    generar_pda(nom)
+
+
 
 

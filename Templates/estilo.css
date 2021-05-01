@@ -1,0 +1,86 @@
+table {
+    border: 10px solid rgb(0, 208, 255);
+    font-family: "Helvetica";
+    width: max-content;
+    font-size: 30px; line-height: 30px;
+ }
+ th, td {
+    text-align: center;
+    vertical-align: top;
+    border: 10px solid rgb(3, 82, 87);
+
+    caption-side: bottom;
+ }
+ caption {
+    padding: 1em;
+    color: #fff;
+     background: #000;
+ }
+ th {
+    background: rgb(5, 245, 221);
+ }
+ td {
+   background: rgb(205, 247, 243);
+}
+ h1 { color: #043256; font-family: "Helvetica", cursive; font-size: 50px; line-height: 75px; 
+   font-weight: normal; margin-bottom: 0px; margin-top: 0px; text-align: center; text-shadow: 0 1px 1px #fff; }
+ .todo{
+   border: 10px solid rgb(0, 208, 255);
+   font-family: "Helvetica";
+   width: 100%;
+   font-size: 30px; line-height: 30px;
+ }
+ 
+ divt{
+    font-size: 6rem;
+    text-align: center;
+    height:10vh;
+    line-height: 20vh;
+    color: #fcedd8;
+ 
+    font-family: 'Niconne', cursive;
+    font-weight: 100;
+    text-shadow: 5px 5px 0px #2be8eb, 
+                10px 10px 0px #efa032, 
+                15px 15px 0px #46b59b, 
+                20px 20px 0px #017e7f, 
+                25px 25px 0px #052939, 
+                30px 30px 0px #1713de, 
+                35px 35px 0px #1a9dc1, 
+                40px 40px 0px #1a8fc1, 
+                45px 45px 0px #0318fe;
+ }
+ 
+ h2 { color: #0f2c74; font-family: 'Lobster', cursive; font-size: 36px; font-weight: normal; line-height: 48px; margin: 0 0 18px; text-shadow: 1px 0 0 #fff;text-align: center; }
+ 
+ 
+ h3 { color: #1f5bc2; font-family: Verdana, cursive; font-size: 20px; font-weight: normal; line-height: 32px; margin: 0 0 18px; text-shadow: 1px 0 0 #fff; text-align: center;}
+ 
+ 
+ p { color: #333; font-family: Verdana, cursive; font-size: 16px; line-height: 28px; margin: 0 0 24px; text-align: center;}
+ 
+ 
+ a { color: #d04764; font-family: Verdana, cursive; text-align: center;}
+ 
+ 
+ a:hover { text-decoration: underline }
+ 
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica";
+    background: linear-gradient(to right, #c6ffdd, #7ff4b4, #2fe8e5);
+ }
+ 
+ .box {
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(to right, #baf8ff, #1c76d5);
+    ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 100px
+ }

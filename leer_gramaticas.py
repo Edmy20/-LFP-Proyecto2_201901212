@@ -7,6 +7,25 @@ def cargar():
     ruta = askopenfilename() 
     return ruta
 
+def validar_gramatica(grammar):
+    libre_contexto = "NO"
+    
+    for regla in grammar.producciones:
+        
+        for rule in regla.rules:
+            size = len(rule)
+            for r in range(size):
+
+                if r!=1:
+                    if rule[r].terminal == 'NO':
+                        libre_contexto = 'SI'
+
+
+    
+    return libre_contexto
+
+
+
 def definir_termino(terminales,no_terminales,der_produc):
     definido = []
 
@@ -49,7 +68,6 @@ def leer_gramaticas():
       if linea[0]!=" ":
         if n==0:
             name = linea.strip("\n")
-            #print(name)
             producciones = []
             n+=1
         elif n==1:
@@ -57,16 +75,10 @@ def leer_gramaticas():
             no_terminales= terminos[0].split(",")
             terminales = terminos[1].split(",")
             terminal_inicial = terminos[2].strip("\n")
-
-            #print(no_terminales)
-            #print(terminales)
-            #print(terminal_inicial)
-
             n+=1
         elif n==2 and linea[0]!="*":
             produc = linea.split("->")
             der_produc = produc[1].split()
-            #print(der_produc)
             producs = definir_termino(terminales,no_terminales,der_produc)
             prod = produccion(produc[0],producs)
             producciones.append(prod)
@@ -75,9 +87,17 @@ def leer_gramaticas():
             n=0
             reglas = agrupar_producciones(no_terminales,producciones)
             grammar = gramatica(name,reglas,terminales,no_terminales,terminal_inicial)
-            gramaticas.append(grammar)
+            add_grammar = validar_gramatica(grammar)
+            if add_grammar == 'SI':
+                gramaticas.append(grammar)
 
            
-    f.close() 
+    f.close()
+    print()
+    print("=================")
+    print("!Archivo Cargado¡")
+    print("=================")
+    print()
+
     
     return gramaticas

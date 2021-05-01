@@ -1,0 +1,18 @@
+digraph { 
+        graph [rankdir=LR]
+        i [label=i shape=circle style=filled fillcolor=skyblue]
+        p [label=p shape=circle style=filled fillcolor=skyblue]
+        q [label=q height=1 shape=circle width = 1 style=filled fillcolor=skyblue]
+        f [label=f shape=doublecircle style=filled fillcolor=skyblue]a [shape = none label=<<table border="0" cellborder="1" cellspacing="0">
+    <tr><td COLSPAN="2" BGCOLOR="skyblue">Nombre:AP_Grm1</td></tr><tr><td BGCOLOR="lightblue1">Terminales</td><td>a , b , z</td></tr><tr><td BGCOLOR="lightblue1" >No Terminales</td><td>S , A , B , C</td></tr><tr><td BGCOLOR="lightblue1" >Alfabeto de Pila</td><td>a , b , z , S , A , B , C , #</td></tr><tr><td BGCOLOR="lightblue1" >Estados</td><td> i , p , q , f  </td></tr><tr><td BGCOLOR="lightblue1" >Estado Inicial</td><td> i </td></tr><tr><td BGCOLOR="lightblue1" >Simbolo Inicial</td><td>S</td></tr><tr><td BGCOLOR="lightblue1" >Estado de Aceptación</td><td> f </td></tr>
+    </table>>]i -> p [label ="$ , $ ; #"]p -> q [label="$ , $ ; S"]q:s -> q:s [label="a , a; $
+b , b; $
+z , z; $
+"]q:n -> q:n [label="$ , S ; A
+$ , A ; aAa
+$ , A ; B
+$ , B ; bBb
+$ , B ; C
+$ , C ; zC
+$ , C ; z
+"]q -> f [label="$ , # , $"]}

@@ -5,35 +5,44 @@ def borrarPantalla():
     elif os.name == "ce" or os.name == "nt" or os.name == "dos":
         os.system ("cls")    
 
-def seleccionar_gramatica(gramaticas):
-    borrarPantalla()
-    print("Estas son las Gramáticas Cargadas en Memoria:")
+def seleccionar(m,y,gramaticas):
+    print("Estas son "+y+"Cargadas en Memoria:")
+    n = 0
     for gra in gramaticas:
-        print("->"+gra.nombre)
+        n+=1
+        print(str(n)+". "+m+gra.nombre)
     
     print()
-    print("Ingrese el nombre de la gramatica a seleccionar:")
+    print("Ingrese el numero correspondiente a su elección:")
     nombre = input()
+    n=0
 
     for g in gramaticas:
-        if g.nombre == nombre:
+        n+=1
+        if str(n) == nombre:
             gramatica = g
 
     return gramatica
 
 
 def mostrar_gramatica(gramaticas):
-    gramatica = seleccionar_gramatica(gramaticas)
+    gramatica = seleccionar("","las Gramaticas ",gramaticas)
     print()
     print("__________________________________________________________________________")
+    gt = " , ".join(gramatica.sim_Noterminales)
+    gn = " , ".join(gramatica.sim_terminales)
     print("Nombre de la Gramatica tipo 2: "+gramatica.nombre)
-    print("No terminales: ",end="")
-    print(gramatica.sim_Noterminales)
-    print("Terminales: ",end="")
-    print(gramatica.sim_terminales)
+    print("No Terminales = { "+gn+" }")
+    print("Terminales = { "+gt+" }")
+
+
     print("No terminal Inicial: ",gramatica.state_inicial)
     print("Producciones: ")
     gramatica.imprimir_gramatica()
+    print("====================================")
+    print("Para regresar al Menu Principal Presione: ENTER")
+    en = input()
+    borrarPantalla()
 
 def llenar_transformaciones(gramatica):
 
@@ -56,17 +65,20 @@ def llenar_ter(terminales):
     return ter
 
 def label_grafo(gramatica):
-    etiqueta = "AP_"+gramatica.nombre+"\n"
-    etiqueta += "Terminales = {"
-    etq1=",".join(gramatica.sim_terminales)
-    etiqueta+=etq1+"}\n"
 
-    etiqueta+="No Terminales = {"
-    etq2=",".join(gramatica.sim_Noterminales)
-    etiqueta+=etq2+"}\n"
-
-    etiqueta+="Alfabeto de Pila = {"+etq1+","+etq2+"#}\n"
-    etiqueta+="Estados = {i,p,q,f}\nEstado Inical = {i}\nEstado de Aceptacion = {f}"
+    etiqueta = """a [shape = none label=<<table border="0" cellborder="1" cellspacing="0">
+    <tr><td COLSPAN="2" BGCOLOR="skyblue">Nombre:"""
+    etiqueta += "AP_"+gramatica.nombre+"</td></tr>"
+    etq1=" , ".join(gramatica.sim_terminales)
+    etiqueta += '<tr><td BGCOLOR="lightblue1">Terminales</td><td>'+etq1+'</td></tr>'
+    etq2=" , ".join(gramatica.sim_Noterminales)
+    etiqueta+= '<tr><td BGCOLOR="lightblue1" >No Terminales</td><td>'+etq2+'</td></tr>'
+    etiqueta+= '<tr><td BGCOLOR="lightblue1" >Alfabeto de Pila</td><td>'+etq1+' , '+etq2+' , #</td></tr>'
+    etiqueta+= '<tr><td BGCOLOR="lightblue1" >Estados</td><td> i , p , q , f  </td></tr>'
+    etiqueta+= '<tr><td BGCOLOR="lightblue1" >Estado Inicial</td><td> i </td></tr>'
+    etiqueta+= '<tr><td BGCOLOR="lightblue1" >Simbolo Inicial</td><td>'+gramatica.state_inicial+'</td></tr>'
+    etiqueta+= """<tr><td BGCOLOR="lightblue1" >Estado de Aceptación</td><td> f </td></tr>
+    </table>>]"""
 
     return etiqueta
     
